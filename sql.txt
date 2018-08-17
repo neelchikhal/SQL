@@ -986,4 +986,327 @@ Return the length of the string:
 
 SELECT CHAR_LENGTH("SQL Tutorial") AS LengthOfString; 
 
+
+	MySQL CHARACTER_LENGTH() Function
+	---------------------------------
+The CHARACTER_LENGTH() function returns the length of the specified string (in characters).
+
+Note: When using this function, a multi-byte character is counted as a single character.
+
+Note: This function is equal to the CHAR_LENGTH() function.
+
+Example
+
+Return the length of the text in the "CustomerName" column:
+
+SELECT CHARACTER_LENGTH(CustomerName) AS LengthOfName
+FROM Customers; 
+
+	MySQL CONCAT() Function
+	-----------------------
+The CONCAT() function concatenates two or more expressions together.
+
+Syntax
+------
+CONCAT(expression1, expression2, expression3,...)
+
+Parameter  Values
+
+Parameter 	Description
+expression1,
+expression2,
+expression3	Required. The expressions to concatenate together.
+
+Note: If expression is a numeric value, it will be converted to a binary string. 
+If all expressions are nonbinary strings, this function will return a nonbinary string. 
+If any of the expressions is a binary string, this function will return a binary string. If any of 
+the expressions is a NULL, this function will return a NULL value.
+
+Example
+
+Concatenate three columns into one "Address" column:
+SELECT CONCAT(Address, " ", PostalCode, " ", City) AS Address
+FROM Customers; 
+
+	MySQL CONCAT_WS() Function
+	--------------------------
+
+The CONCAT_WS() function concatenates two or more expressions together and adds a separator between them.
+
+Syntax
+
+CONCAT_WS(separator, expression1, expression2, expression3,...)
+
+Parameter Values
+
+separator 	Required. The separator to add between each of the concatenated expressions. If separator is a NULL, 
+		this function will return a NULL value
+
+expression1,    Required. The expressions to concatenate together. Expressions that contain a NULL 	
+expression2,    value will be skipped
+expression3,
+etc. 	
+
+Example
+
+Concatenate three columns (and add a space between them) into one "Address" column:
+
+
+SELECT CONCAT_WS(" ", Address, PostalCode, City) AS Address
+FROM Customers; 
+
+
+	MySQL INSERT() Function
+	-----------------------
+
+The INSERT() function inserts a substring into a string at a specified position for a certain number of characters
+
+Parameter 	Description
+string 		Required. The string that will be modified
+position 	Required. The position where to insert the substring
+number 		Required. The number of characters to replace
+substring 	Required. The substring to insert into string
+
+Note
+
+==>The first position in string is 1
+==>If position is not within the length of string, INSERT() will return string
+==>If number is not within the length of the rest of the string, INSERT() will replace string starting from 
+   position until the end of string
+
+Example
+
+Insert the string "no" into the string "W3Schools.com". Replace three characters, starting from position 11:
+
+
+SELECT INSERT("W3Schools.com", 11, 3, "no"); 
+
+
+	MySQL INSTR() Function
+	----------------------
+
+The INSTR() function returns the position of the first occurrence of a string in another string.
+
+Syntax
+INSTR(string, substring) 
+
+Parameter 	Description
+
+string 		Required. The string that will be searched
+substring 	Required. The substring to search for in string
+
+Example
+
+Search for "COM" in string "W3Schools.com", and return position:
+
+SELECT INSTR("W3Schools.com", "COM") AS MatchPosition; 
+
+
+	MySQL LCASE() Function
+	----------------------
+
+The LCASE() function converts a string to lower-case.
+
+Syntax
+LCASE(text) 
+
+Example
+
+Convert the text in "CustomerName" to lower-case:
+SELECT LCASE(CustomerName) AS LowercaseCustomerName
+FROM Customers; 
+
+
+	MySQL LEFT() Function
+	---------------------
+
+The LEFT() function extracts a substring from a string (starting from left).
+
+Syntax
+LEFT(string, number_of_chars) 
+
+Example
+
+Extract a substring from the text in a column (starting from left):
+
+SELECT LEFT(CustomerName, 5) AS ExtractString
+FROM Customers; 
+
+
+	MySQL LENGTH() Function
+	-----------------------
+
+The LENGTH() function returns the length of the specified string (in bytes).
+
+Syntax
+LENGTH(string)
+
+Example
+
+Return the length of the text in the "CustomerName" column, in bytes:
+
+SELECT LENGTH(CustomerName) AS LengthOfName
+FROM Customers; 
+
+	
+	MySQL LOCATE() Function
+	-----------------------
+
+The LOCATE() function returns the position of the first occurrence of a substring in a string.
+
+Syntax
+LOCATE(substring, string, start) 
+
+Note
+
+    LOCATE() performs a case-insensitive search
+    The first position in string is 1
+    If substring is not found within string, the LOCATE() function will return 0
+
+Example
+
+Search for "a" in CustomerName column, and return position:
+SELECT LOCATE("a", CustomerName)
+FROM Customers; 
+
+	MySQL LPAD() Function
+	---------------------
+
+The LPAD() function returns a string that is left-padded with a specified string to a certain length.
+
+Syntax
+LPAD(string, length, pad_string) 
+
+Note: If string is longer than length, the LPAD() function will remove the over floating characters from string. 
+
+
+Example
+
+Left-pad the text in "CustomerName" with "ABC", to a total length of 30:
+
+SELECT LPAD(CustomerName, 30, "ABC") AS LeftPadCustomerName
+FROM Customers; 
+
+	MySQL RPAD() Function
+	---------------------
+
+The RPAD() function returns a string that is right-padded with a specified string to a certain length.
+
+Syntax
+RPAD(string, length, pad_string) 
+
+Example
+
+Right-pad the text in "CustomerName" with "ABC", to a total length of 30:
+
+SELECT RPAD(CustomerName, 30, "ABC") AS RightPadCustomerName
+FROM Customers; 
+
+	MySQL LTRIM() Function
+	----------------------
+
+The LTRIM() function removes leading spaces from a string.
+
+Syntax
+LTRIM(string) 
+
+
+	MySQL MID() Function
+	--------------------
+
+The MID() function extracts a substring from a string (starting at any position).
+
+Syntax
+MID(string, start, length) 
+
+Note
+
+    The first position in string is 1
+    If start is a positive number, the MID() function starts from the beginning of the string
+    If start is a negative number, the MID() function starts from the end of the string
+
+Example
+
+Extract a substring from the text in a column (start at position 2, extract 5 characters):
+
+SELECT MID(CustomerName, 2, 5) AS ExtractString
+FROM Customers; 
+
+Extract a substring from a string (start from the end, at position -5, extract 5 characters):
+
+SELECT MID("SQL Tutorial", -5, 5) AS ExtractString; 
+
+
+	MySQL POSITION() Function
+	-------------------------
+
+The POSITION() function returns the position of the first occurrence of a substring in a string.
+
+Syntax
+POSITION(substring IN string) 
+
+Note
+
+    POSITION() performs a case-insensitive search
+    The first position in string is 1
+    If substring is not found within string, the POSITION() function will return 0
+
+Example
+
+Search for "COM" in string "W3Schools.com", and return position:
+
+SELECT POSITION("COM" IN "W3Schools.com") AS MatchPosition; 
+
+	MySQL REPEAT() Function
+	-----------------------
+
+The REPEAT() function repeats a string a specified number of times.
+Syntax
+REPEAT(string, number) 
+
+Repeat the text in CustomerName two times:
+
+SELECT REPEAT(CustomerName, 2)
+FROM Customers; 
+
+
+	MySQL REPLACE() Function
+	------------------------
+
+The REPLACE() function replaces all occurrences of a specified string.
+
+Note: The REPLACE() function performs a case-sensitive replacement.
+Syntax
+REPLACE(string, from_substring, to_substring) 
+
+Example
+
+Replace the substring "A" with "B":
+SELECT REPLACE("ABC ABC ABC", "A", "B"); 
+
+	MySQL REVERSE() Function
+	------------------------
+
+The REVERSE() function reverses a string and returns the result.
+
+Syntax
+REVERSE(string) 
+
+Example
+
+Reverse the text in CustomerName:
+SELECT REVERSE(CustomerName)
+FROM Customers; 
+
+	MySQL SPACE() Function
+	----------------------
+
+The SPACE() function returns a string with a specified number of spaces.
+
+Syntax
+SPACE(number) 
+
+
+
+
 	
